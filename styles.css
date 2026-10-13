@@ -69,3 +69,7 @@
 .group-more{border-style:dashed!important;color:#c1b4ff!important}
 @media(max-width:760px){.playlist-auth-panel{min-height:100svh;max-width:none;padding:24px 18px}.playlist-auth-panel .mobile-brand{margin-bottom:26px}.playlist-auth-panel .auth-heading{margin-bottom:22px}.playlist-auth-panel .auth-heading h2{font-size:23px}.playlist-auth-panel .auth-heading p{line-height:1.9}.playlist-import-row{align-items:flex-start}.saved-playlist-list{max-height:240px}.saved-playlist-actions{flex-direction:column;justify-content:center}.saved-playlist-actions button{min-width:38px}.auth-bottom{margin-top:27px}}
 @media(min-width:1200px){.playlist-auth-panel .field-wrap{height:58px}.playlist-auth-panel .primary-button{height:57px}.saved-playlist-open{padding:12px 13px}.saved-playlist-copy b{font-size:13px}.saved-playlist-copy small{font-size:10px}.saved-playlist-actions button{font-size:10px;padding:7px 9px}}
+
+/* Explicit save-only action: allows users to store a playlist even when remote fetching is blocked. */
+.save-only-button{display:flex;justify-content:center;align-items:center;width:100%;min-height:43px;margin-top:10px;padding:9px 13px;border:1px solid #34394b;border-radius:11px;background:#151925;color:#c5cbe0;font-size:11px;text-align:center}
+.save-only-button:hover{border-color:#8d75e5;background:#1a1d2b;color:#fff}

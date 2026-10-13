@@ -442,10 +442,26 @@
   function closeSidebar() { $('#sidebar').classList.remove('open'); }
 
   // URL list handling: URLs and their credentials are stored only in this browser's localStorage.
+  // Save-only action: this must work even if the provider blocks CORS or the playlist is offline.
+  $('#savePlaylistOnlyButton').addEventListener('click', () => {
+    clearLoginError();
+    try {
+      const playlist = addOrUpdatePlaylist($('#playlistUrlInput').value, $('#playlistNameInput').value);
+      renderSavedPlaylists();
+      showToast(`تم حفظ «${playlist.name || hostOf(playlist.url)}» على هذا الجهاز. يمكنك فتحها لاحقًا من القوائم المحفوظة.`, 'success');
+      $('#playlistUrlInput').value = '';
+      $('#playlistNameInput').value = '';
+    } catch (error) {
+      showLoginError(error.message || 'تعذّر حفظ الرابط. تحقق من الرابط وحاول مرة أخرى.');
+    }
+  });
+
   $('#playlistForm').addEventListener('submit', async event => {
     event.preventDefault(); clearLoginError();
     try {
       const playlist = addOrUpdatePlaylist($('#playlistUrlInput').value, $('#playlistNameInput').value);
+      renderSavedPlaylists();
+      showToast('تم حفظ الرابط. جارٍ محاولة تحميل محتوى القائمة…');
       await loadPlaylist(playlist);
     } catch (error) { showLoginError(error.message || 'تحقق من رابط القائمة.'); }
   });
