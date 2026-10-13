@@ -5,3 +5,67 @@
 @media(max-width:760px){.auth-layout{display:block;padding:0;min-height:100svh}.auth-art{display:none}.auth-panel{min-height:100svh;max-width:470px;padding:32px 23px 24px;justify-content:center}.mobile-brand{display:flex;margin-bottom:50px}.auth-heading h2{font-size:24px}.auth-bottom{margin-top:32px}.topbar{height:65px;padding:0 16px}.top-brand{font-size:15px}.top-brand .brand-mark{width:27px;height:27px}.topbar-center{display:none}.disconnect-button{padding:7px 9px;font-size:9px}.mobile-menu-button{display:flex}.app-shell{display:block;min-height:calc(100vh - 65px)}.sidebar{position:fixed;z-index:30;top:65px;bottom:0;right:0;width:min(285px,84vw);min-height:0;height:calc(100dvh - 65px);background:#0d1018f7;backdrop-filter:blur(20px);border-left:1px solid #ffffff14;box-shadow:-20px 0 80px #0007;transform:translateX(110%);transition:transform .25s ease;padding:24px 17px}.sidebar.open{transform:translateX(0)}.sidebar-bottom{min-height:125px}.main-content{padding:25px 16px 18px}.content-topline{display:block;margin-bottom:20px}.page-titles h1{font-size:21px}.search-wrap{width:100%;margin-top:17px;height:42px}.hero-banner{min-height:230px;padding:21px 20px;margin-bottom:29px}.hero-content{max-width:75%}.hero-content h2{font-size:21px}.hero-content p{font-size:9px;max-width:255px}.hero-art{width:47%;left:-17%;opacity:.45}.ring-a{width:190px;height:190px}.ring-b{width:145px;height:210px}.hero-x{font-size:140px}.hero-index{left:15px;bottom:13px}.content-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 10px}.poster-button{border-radius:10px}.media-title{font-size:9px;min-height:35px}.media-meta{padding-top:7px}.poster-placeholder{font-size:47px}.poster-play{width:32px;height:32px}.favorite-button{width:25px;height:25px;top:5px;left:5px}.type-badge{font-size:7px}.poster-bottom{right:6px;left:6px;bottom:6px}.main-footer{font-size:8px;flex-direction:column;gap:5px}.player-overlay{padding:0;align-items:center}.player-window{border-radius:0;width:100%;border-left:0;border-right:0}.player-header{padding:11px 12px}.player-title-wrap h2{max-width:34vw;font-size:11px}.player-actions{gap:4px}.player-action{padding:4px 6px;min-height:30px}.player-action span{display:none}.player-close{width:30px;height:30px}.player-stage{aspect-ratio:16/9;max-height:none}.player-stage video{max-height:none}.player-bottom{padding:10px 12px}.episode-list{grid-template-columns:1fr}.series-window{border-radius:14px;padding:16px}.toast{left:12px;bottom:12px}.result-count{font-size:9px}}
 @media(max-width:390px){.brand{font-size:17px}.mobile-brand{margin-bottom:40px}.auth-panel{padding-left:18px;padding-right:18px}.content-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}.hero-content{max-width:85%}.hero-content h2{font-size:19px}.hero-art{left:-29%;opacity:.28}.hero-button{padding:8px 10px}.hero-index{display:none}.section-head h2{font-size:15px}.player-live-dot{display:none}.player-title-wrap h2{max-width:29vw}.player-action{font-size:9px}}
 @media(orientation:landscape) and (max-height:520px) and (max-width:950px){.player-overlay{padding:0}.player-window{height:100dvh;display:flex;flex-direction:column}.player-header{flex:0 0 auto;padding:6px 10px}.player-stage{flex:1;min-height:0;max-height:none;aspect-ratio:auto}.player-stage video{max-height:100%;height:100%}.player-bottom{flex:0 0 auto;padding:5px 10px}.player-title-wrap small{display:none}}
+
+/* TV / Android TV / remote-control friendly layout */
+@media (min-width: 1200px) {
+  body { font-size: 15px; }
+  .topbar { min-height: 78px; padding-inline: clamp(24px, 3vw, 52px); }
+  .topbar-actions { gap: 12px; }
+  .disconnect-button, .icon-button, .nav-item, .category-chip, .hero-button, .load-more-button, .player-action, .player-close { min-height: 46px; font-size: 14px; }
+  .app-shell { grid-template-columns: 260px minmax(0, 1fr); }
+  .sidebar { padding: 30px 18px; }
+  .nav-item { padding: 13px 14px; gap: 12px; }
+  .main-content { padding: 36px clamp(30px, 3vw, 58px); }
+  .content-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px 18px; }
+  .media-title { font-size: 13px; }
+  .media-meta { font-size: 11px; }
+  .page-titles h1 { font-size: 30px; }
+  .hero-banner { min-height: 290px; padding: 36px; }
+  .hero-content h2 { font-size: 34px; }
+  .player-window { width: min(1500px, 96vw); }
+}
+/* Visible focus states make TV remote navigation easier */
+:where(button, a, input, [tabindex]):focus-visible {
+  outline: 3px solid #65e8d0;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px #65e8d022;
+}
+.page-fullscreen-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; white-space: nowrap; }
+@media (max-width: 760px) {
+  .page-fullscreen-button { min-height: 38px; padding: 6px 9px; font-size: 10px; }
+  .page-fullscreen-button span { display: none; }
+}
+:fullscreen { background: var(--bg); overflow: auto; }
+:fullscreen .app-view { min-height: 100dvh; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* M3U playlist manager */
+.playlist-auth-panel{max-width:650px;padding-top:34px;padding-bottom:28px}
+.optional-label{color:#707a90;font-size:9px;font-weight:400;margin-right:6px}
+.playlist-import-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:13px;flex-wrap:wrap}
+.file-import-button{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;margin:0;min-height:39px;padding:8px 13px;border:1px solid #8d70fa4c;color:#d6ceff;background:#8d70fa14;border-radius:9px;font-size:10px}
+.text-button{border:0;background:transparent;color:#8994ad;font-size:10px;padding:8px 0;text-decoration:underline;text-underline-offset:4px}
+.text-button:hover{color:#c6bbff}
+.saved-playlists-panel{margin-top:23px;min-width:0}
+.saved-playlists-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px}
+.saved-playlists-heading h3{margin:3px 0 0;font-size:14px}
+.saved-playlist-list{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow:auto;padding:2px 3px 3px 0;overscroll-behavior:contain}
+.saved-playlist{display:flex;align-items:stretch;gap:6px;border:1px solid #ffffff12;background:#111520;border-radius:12px;overflow:hidden;min-width:0;transition:border-color .2s,background .2s}
+.saved-playlist.is-active{border-color:#8d75e56b;background:#17162a}
+.saved-playlist-open{display:flex;align-items:center;gap:10px;flex:1;min-width:0;text-align:right;color:#edf0fa;background:transparent;border:0;padding:10px 11px}
+.saved-playlist-open:hover{background:#ffffff05}
+.saved-playlist-icon{width:34px;height:34px;flex-shrink:0;display:grid;place-items:center;border-radius:9px;background:#9d7bff19;border:1px solid #9d7bff24;color:#c8b9ff;font-size:15px}
+.saved-playlist-copy{display:block;min-width:0;flex:1}
+.saved-playlist-copy b,.saved-playlist-copy small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.saved-playlist-copy b{font-size:11px;font-weight:700}
+.saved-playlist-copy small{font-size:9px;color:#778198;margin-top:3px;direction:ltr;text-align:right}
+.saved-playlist-arrow{color:#9381dd;font-size:17px;flex-shrink:0}
+.saved-playlist-actions{display:flex;align-items:center;gap:4px;padding:5px 7px 5px 5px}
+.saved-playlist-actions button{background:#1a1e2b;border:1px solid #ffffff0b;color:#8f98ad;border-radius:7px;padding:5px 7px;font-size:9px;white-space:nowrap}
+.saved-playlist-actions button:hover{color:#fff;border-color:#9d7bff55}
+.saved-playlist-actions button[data-remove-playlist]:hover{color:#ffadb7;border-color:#c35e7055}
+.saved-playlist-empty{padding:16px 12px;border:1px dashed #ffffff18;border-radius:11px;text-align:center;color:#777f94;font-size:10px}
+.category-chip small{font:9px Inter,sans-serif;color:#8e83bd;margin-right:4px}
+.group-more{border-style:dashed!important;color:#c1b4ff!important}
+@media(max-width:760px){.playlist-auth-panel{min-height:100svh;max-width:none;padding:24px 18px}.playlist-auth-panel .mobile-brand{margin-bottom:26px}.playlist-auth-panel .auth-heading{margin-bottom:22px}.playlist-auth-panel .auth-heading h2{font-size:23px}.playlist-auth-panel .auth-heading p{line-height:1.9}.playlist-import-row{align-items:flex-start}.saved-playlist-list{max-height:240px}.saved-playlist-actions{flex-direction:column;justify-content:center}.saved-playlist-actions button{min-width:38px}.auth-bottom{margin-top:27px}}
+@media(min-width:1200px){.playlist-auth-panel .field-wrap{height:58px}.playlist-auth-panel .primary-button{height:57px}.saved-playlist-open{padding:12px 13px}.saved-playlist-copy b{font-size:13px}.saved-playlist-copy small{font-size:10px}.saved-playlist-actions button{font-size:10px;padding:7px 9px}}
